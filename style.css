@@ -47,15 +47,13 @@ i:hover {
     white-space: nowrap;
     overflow: hidden;
     border-right: 1px solid var(--font-color-primary);
-    transform: translateY(-50%);    
-
     animation: typewriter 1s steps(9) 1s 1 normal both,
                 blinkTextCursor 530ms steps(9) infinite normal;
 }
 .line {
     width: 12rem;
     border-bottom: 2px solid var(--font-color-primary);
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
     transform: scaleX(0);
     transform-origin: left;
