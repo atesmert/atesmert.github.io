@@ -1,0 +1,88 @@
+:root {
+    --main-bg-color: #333333;
+    --font-color-primary: #fafafa;
+    --font-color-secondary: #fafafa;
+    --icon-color-primary: #fafafa;
+    --icon-color-secondary: #e32249;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+    background-color: var(--main-bg-color);
+    color:var(--font-color-primary);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    color: var(--icon-color-primary);
+}
+i:hover {
+    color: var(--icon-color-secondary);
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.main{
+    height:100%;
+    width:100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 2rem;
+    width: 6rem;
+    margin: 0 auto;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid var(--font-color-primary);
+    transform: translateY(-50%);    
+
+    animation: typewriter 1s steps(9) 1s 1 normal both,
+                blinkTextCursor 530ms steps(9) infinite normal;
+}
+.line {
+    width: 12rem;
+    border-bottom: 2px solid var(--font-color-primary);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: drawLine 1s forwards;
+    animation-delay: 2s;
+}
+.references {
+    font-size: 2rem;
+    opacity: 0;
+    animation: fadeIn ease 2s forwards;    
+    animation-delay: 2s;
+}
+
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 12rem;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: var(--font-color-primary);}
+  to{border-right-color: transparent;}
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes drawLine {
+    from {transform: scaleX(0);}
+    to {transform: scaleX(1);}
+}
+
