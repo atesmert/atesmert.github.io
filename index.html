@@ -14,19 +14,29 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-156467777-1');
-        /**
-        * Function that registers a click on an outbound link in Analytics.
-        * This function takes a valid URL string as an argument, and uses that URL string
-        * as the event label. Setting the transport method to 'beacon' lets the hit be sent
-        * using 'navigator.sendBeacon' in browser that support it.
-        */
-        var getOutboundLink = function(url) {
-          gtag('event', 'click', {
-            'event_category': 'outbound',
-            'event_label': url,
-            'transport_type': 'beacon',
-            'event_callback': function(){document.location = url;}
-          });
+        // var getOutboundLink = function(url) {
+        //   gtag('event', 'click', {
+        //     'event_category': 'outbound',
+        //     'event_label': url,
+        //     'transport_type': 'beacon',
+        //     'event_callback': function(){document.location = url;}
+        //   });
+        // }
+        for (var links = document.links, i = 0, length = links.length; i < length; i++) {
+            var link = links[i];
+            if (link.hostname != window.location.hostname) {
+                link.onclick = function(e) {
+                    var url = e.target.href;
+                    var openingInNewWindow = (e.target.target && !e.target.target.match(/^_(self|parent|top)$/i)) || e.ctrlKey || e.shiftKey || e.metaKey;
+                    gtag('event', 'click', {
+                        'event_category': 'outbound',
+                        'event_label': url,
+                        'transport_type': 'beacon',
+                        'event_callback': openingInNewWindow ? null : function() {document.location = url;}
+                    });
+                    return openingInNewWindow;
+                }
+            }
         }
     </script>
     <title>Mert Ates</title>
@@ -42,13 +52,13 @@
         </div>
         <div class="container line"></div>
         <div class="container references">
-            <a href="https://github.com/atesmert" target="_blank" onclick="getOutboundLink('https://github.com/atesmert'); return false;">
+            <a href="https://github.com/atesmert" target="_blank">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/mert-ates/" target="_blank" onclick="getOutboundLink('https://www.linkedin.com/in/mert-ates/'); return false;">
+            <a href="https://www.linkedin.com/in/mert-ates/" target="_blank">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://medium.com/@mertates.0100110101000001" target="_blank" onclick="getOutboundLink('https://medium.com/@mertates.0100110101000001'); return false;">
+            <a href="https://medium.com/@mertates.0100110101000001" target="_blank">
                 <i class="fab fa-medium-m"></i>
             </a>
         </div>
