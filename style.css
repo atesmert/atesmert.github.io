@@ -5,7 +5,6 @@
     --icon-color-primary: #fafafa;
     --icon-color-secondary: #e32249;
 }
-
 body {
     height: 100vh;
     width: 100vw;
@@ -16,11 +15,9 @@ body {
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;
 }
-
 a {
     text-decoration: none;
 }
-
 i {
     color: var(--icon-color-primary);
 }
@@ -29,7 +26,6 @@ i:hover {
     cursor: pointer;
     transform: scale(1.2);
 }
-
 .main{
     height:100%;
     width:100%;
@@ -38,20 +34,18 @@ i:hover {
     align-items: center;
     justify-content: center;
 }
-
 .title {
     font-size: 2rem;
-    width: 6rem;
+    /* width: 6rem; */
     margin: 0 auto;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     border-right: 1px solid var(--font-color-primary);
-    animation: typewriter 1s steps(9) 1s 1 normal both,
-                blinkTextCursor 530ms steps(9) infinite normal;
+    animation: typewriter 1s steps(9) 1s 1 normal both, blinkTextCursor 530ms steps(9) infinite normal;
 }
 .line {
-    width: 12rem;
+    width: 12em;
     border-bottom: 2px solid var(--font-color-primary);
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -63,13 +57,13 @@ i:hover {
 .references {
     font-size: 2rem;
     opacity: 0;
-    animation: fadeIn ease 2s forwards;    
+    animation: fadeIn ease 4s forwards;    
     animation-delay: 2s;
 }
 
 @keyframes typewriter{
   from{width: 0;}
-  to{width: 12rem;}
+  to{width: 6em;}
 }
 @keyframes blinkTextCursor{
   from{border-right-color: var(--font-color-primary);}
@@ -84,3 +78,13 @@ i:hover {
     to {transform: scaleX(1);}
 }
 
+/* @media only screen and (max-width:991px) {
+    .title{
+        animation: fadeIn ease 2s forwards, blinkTextCursor 530ms steps(9) infinite normal;    
+    }
+}
+@media only screen and (min-width: 992px) {
+    .title{
+        animation: typewriter 1s steps(9) 1s 1 normal both, blinkTextCursor 530ms steps(9) infinite normal;
+    }
+} */
