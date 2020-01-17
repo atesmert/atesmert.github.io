@@ -14,6 +14,20 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-156467777-1');
+        /**
+        * Function that registers a click on an outbound link in Analytics.
+        * This function takes a valid URL string as an argument, and uses that URL string
+        * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+        * using 'navigator.sendBeacon' in browser that support it.
+        */
+        var getOutboundLink = function(url) {
+          gtag('event', 'click', {
+            'event_category': 'outbound',
+            'event_label': url,
+            'transport_type': 'beacon',
+            'event_callback': function(){document.location = url;}
+          });
+        }
     </script>
     <title>Mert Ates</title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
@@ -28,13 +42,13 @@
         </div>
         <div class="container line"></div>
         <div class="container references">
-            <a href="https://github.com/atesmert" target="_blank" onclick="gtag('event', 'Click', {'event_category': 'Button', 'event_label': 'github'});">
+            <a href="https://github.com/atesmert" target="_blank" onclick="getOutboundLink('https://github.com/atesmert'); return false;">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/mert-ates/" target="_blank" onclick="gtag('event', 'Click', {'event_category': 'Button', 'event_label': 'linkedin'});">
+            <a href="https://www.linkedin.com/in/mert-ates/" target="_blank" onclick="getOutboundLink('https://www.linkedin.com/in/mert-ates/'); return false;">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://medium.com/@mertates.0100110101000001" target="_blank" onclick="gtag('event', 'Click', {'event_category': 'Button', 'event_label': 'medium'});">
+            <a href="https://medium.com/@mertates.0100110101000001" target="_blank" onclick="getOutboundLink('https://medium.com/@mertates.0100110101000001'); return false;">
                 <i class="fab fa-medium-m"></i>
             </a>
         </div>
